@@ -11,10 +11,22 @@ public class Poll {
     @Column(name = "POLL_ID")
     public Long id;
 
+    //Getter
+    public Long getId() {
+        return id;
+    }
+    //Setter
+       public void setId(Long id){
+        this.id = id;
+
+    }
+
     @Column(name = "QUESTION")
     private String question;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "POLL_ID")
+    @OrderBy
     private Set <Option>options;
 
 
